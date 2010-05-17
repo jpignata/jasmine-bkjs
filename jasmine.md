@@ -141,6 +141,10 @@
 
 !SLIDE
 
+![Example test run](./images/spy-not-called.jpg) 
+
+!SLIDE
+
 @@@ js
     var TwitterApi = function() {
       this.trendsUrl = "http://search.twitter.com/1/trends/current.json?callback=?"
@@ -152,6 +156,10 @@
       }
     };
 @@@
+
+!SLIDE
+
+![Example test run](./images/spy-called.jpg) 
 
 !SLIDE
 
@@ -208,6 +216,44 @@
 !SLIDE
 
 ![Example test run](./images/spies-array-pass.jpg) 
+
+!SLIDE
+
+# Spy Matchers
+
+@@@ js
+    spyOn(jQuery, "getJSON");
+
+    expect(jQuery.getJSON).wasCalled();
+    expect(jQuery.getJSON).wasNotCalled();
+    expect(jQuery.getJSON).wasCalledWith("http://example.com/service.json");
+    expect(jQuery.getJSON).wasNotCalledWith("http://example.com/service.xml");
+@@@
+
+!SLIDE
+
+# Spy Definitions
+
+@@@ js
+    spyOn(Math, "sqrt").andCallThrough(); // Calls the original function
+    spyOn(Math, "sqrt").andReturn(42); // Return 42
+    spyOn(Math, "sqrt").andThrow("Exception"); // Throws an exception
+    spyOn(Math, "sqrt").andCallFake(function(arg) { 
+      return arg * Math.random(); 
+    }); // Substitute with fake anonymous function
+@@@
+
+!SLIDE 
+
+# Spy Properties
+
+@@@ js
+    spyOn(jQuery, "getJSON");
+  
+    jQuery.getJSON.callCount; // Number of calls to spy
+    jQuery.getJSON.mostRecentCall.args; // Arguments for most recent call to the spy
+    jQuery.getJSON.argsForCall[1]; // Arguments for a specific call to the spy
+@@@
 
 !SLIDE
 

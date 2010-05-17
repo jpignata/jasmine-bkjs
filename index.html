@@ -5027,6 +5027,12 @@ So that I don't risk offending my users
         
           <div class="">
             <div id="slide-15" class="content">
+              <p><img src="./images/spy-not-called.jpg" alt="Example test run"></p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-16" class="content">
               <div class="highlight js code highlight"><pre><span class="kd">var</span> <span class="nx">TwitterApi</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">trendsUrl</span> <span class="o">=</span> <span class="s2">"http://search.twitter.com/1/trends/current.json?callback=?"</span>
 <span class="p">};</span>
@@ -5041,7 +5047,13 @@ So that I don't risk offending my users
           </div>
         
           <div class="">
-            <div id="slide-16" class="content">
+            <div id="slide-17" class="content">
+              <p><img src="./images/spy-called.jpg" alt="Example test run"></p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-18" class="content">
               <div class="highlight js code highlight"><pre><span class="nx">mockResponse</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">as_of</span><span class="o">:</span> <span class="s2">"2010-05-18 19:21"</span><span class="p">,</span>
   <span class="nx">trends</span><span class="o">:</span> <span class="p">[</span>
@@ -5057,7 +5069,7 @@ So that I don't risk offending my users
           </div>
         
           <div class="">
-            <div id="slide-17" class="content">
+            <div id="slide-19" class="content">
               <div class="highlight js code highlight"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"TwitterApi"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">it</span><span class="p">(</span><span class="s2">"responds with an array of current trends"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">spyOn</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="s2">"getJSON"</span><span class="p">)</span>
@@ -5079,13 +5091,13 @@ So that I don't risk offending my users
           </div>
         
           <div class="">
-            <div id="slide-18" class="content">
+            <div id="slide-20" class="content">
               <p><img src="./images/spies-array-failure.jpg" alt="Example test run"></p>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-19" class="content">
+            <div id="slide-21" class="content">
               <div class="highlight js code highlight"><pre><span class="nx">TwitterApi</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">getTrends</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">trendsUrl</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">)</span> <span class="p">{</span>
@@ -5098,13 +5110,48 @@ So that I don't risk offending my users
           </div>
         
           <div class="">
-            <div id="slide-20" class="content">
+            <div id="slide-22" class="content">
               <p><img src="./images/spies-array-pass.jpg" alt="Example test run"></p>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-21" class="content">
+            <div id="slide-23" class="content">
+              <h1>Spy Matchers</h1><div class="highlight js code highlight"><pre><span class="nx">spyOn</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="s2">"getJSON"</span><span class="p">);</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalled</span><span class="p">();</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasNotCalled</span><span class="p">();</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalledWith</span><span class="p">(</span><span class="s2">"http://example.com/service.json"</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasNotCalledWith</span><span class="p">(</span><span class="s2">"http://example.com/service.xml"</span><span class="p">);</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-24" class="content">
+              <h1>Spy Definitions</h1><div class="highlight js code highlight"><pre><span class="nx">spyOn</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="s2">"sqrt"</span><span class="p">).</span><span class="nx">andCallThrough</span><span class="p">();</span> <span class="c1">// Calls the original function</span>
+<span class="nx">spyOn</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="s2">"sqrt"</span><span class="p">).</span><span class="nx">andReturn</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span> <span class="c1">// Return 42</span>
+<span class="nx">spyOn</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="s2">"sqrt"</span><span class="p">).</span><span class="nx">andThrow</span><span class="p">(</span><span class="s2">"Exception"</span><span class="p">);</span> <span class="c1">// Throws an exception</span>
+<span class="nx">spyOn</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="s2">"sqrt"</span><span class="p">).</span><span class="nx">andCallFake</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="k">return</span> <span class="nx">arg</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span> 
+<span class="p">});</span> <span class="c1">// Substitute with fake anonymous function</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-25" class="content">
+              <h1>Spy Properties</h1><div class="highlight js code highlight"><pre><span class="nx">spyOn</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="s2">"getJSON"</span><span class="p">);</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">.</span><span class="nx">callCount</span><span class="p">;</span> <span class="c1">// Number of calls to spy</span>
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">;</span> <span class="c1">// Arguments for most recent call to the spy</span>
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">.</span><span class="nx">argsForCall</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// Arguments for a specific call to the spy</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-26" class="content">
               <h1>Jasmine Ruby Gem</h1><pre><code>$ rails _2.3.5_ app
 $ cd app
 $ script/generate jasmine
@@ -5116,13 +5163,13 @@ $ rake jasmine
           </div>
         
           <div class="">
-            <div id="slide-22" class="content">
+            <div id="slide-27" class="content">
               <p><img src="./images/textmate-after-generate.jpg" alt="Textmate"><img src="./images/jasmine-ruby-sample.jpg" alt="Example test run"></p>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-23" class="content">
+            <div id="slide-28" class="content">
               <h1>More!</h1><ul>
 <li>http://github.com/pivotal/jasmine</li>
 <li>http://github.com/pivotal/jasmine-ruby</li>
@@ -5132,7 +5179,7 @@ $ rake jasmine
           </div>
         
           <div class="">
-            <div id="slide-24" class="content">
+            <div id="slide-29" class="content">
               <p><img src="./images/pivotal-labs.png" alt="Pivotal Labs"></p><h1>Happy Hour!</h1><h2>This Friday @ 7pm</h2><h2>Blue Owl (2nd Avenue and 12th Street)</h2><h4>Follow @pivotallabs</h4>
             </div>
           </div>
