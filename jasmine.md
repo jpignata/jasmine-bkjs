@@ -257,9 +257,55 @@
 
 !SLIDE
 
+@@@ js
+    describe("TwitterApi", function() {
+      beforeEach(function() { 
+        jQuery('<div id="trends" />').appendTo("body"); 
+      });
+
+      afterEach(function() { jQuery("#trends").remove(); });    
+  
+      describe(".updateTrends", function() {
+        it("builds a link for each trend and attaches it to #trends", function() {
+          twitterApi = new TwitterApi();
+          twitterApi.updateTrends(mockResponse.trends);
+          href = jQuery('#trends li a:contains(iPad)').attr('href');
+          expect(href).toEqual('http://fake.url/ipad');
+        });
+      });
+    });
+@@@
+
+!SLIDE
+
+@@@ js
+    TwitterApi.prototype = {
+      updateTrends: function(trends) {
+        jQuery.each(trends, function(i, trend) {
+          li = jQuery("<li />");
+
+          jQuery("<a />")
+            .attr("href", trend.url)
+            .attr("target", "_blank")
+            .html(trend.name)
+            .appendTo(li);
+
+          li.appendTo("#trends");
+        });
+      }
+    }
+@@@
+
+!SLIDE
+
+![Example test run](./images/trends-pass.jpg) 
+
+!SLIDE
+
 # Jasmine Ruby Gem
 
 @@@
+    $ gem install jasmine-ruby
     $ rails _2.3.5_ app
     $ cd app
     $ script/generate jasmine

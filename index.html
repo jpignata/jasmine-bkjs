@@ -5152,7 +5152,57 @@ So that I don't risk offending my users
         
           <div class="">
             <div id="slide-26" class="content">
-              <h1>Jasmine Ruby Gem</h1><pre><code>$ rails _2.3.5_ app
+              <div class="highlight js code highlight"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"TwitterApi"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'&lt;div id="trends" /&gt;'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"body"</span><span class="p">);</span> 
+  <span class="p">});</span>
+
+  <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s2">"#trends"</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span> <span class="p">});</span>    
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s2">".updateTrends"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">"builds a link for each trend and attaches it to #trends"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">twitterApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TwitterApi</span><span class="p">();</span>
+      <span class="nx">twitterApi</span><span class="p">.</span><span class="nx">updateTrends</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">.</span><span class="nx">trends</span><span class="p">);</span>
+      <span class="nx">href</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'#trends li a:contains(iPad)'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'href'</span><span class="p">);</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">href</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'http://fake.url/ipad'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-27" class="content">
+              <div class="highlight js code highlight"><pre><span class="nx">TwitterApi</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">updateTrends</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">trends</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">jQuery</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">trends</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">trend</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">li</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s2">"&lt;li /&gt;"</span><span class="p">);</span>
+
+      <span class="nx">jQuery</span><span class="p">(</span><span class="s2">"&lt;a /&gt;"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="nx">trend</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"target"</span><span class="p">,</span> <span class="s2">"_blank"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">trend</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+
+      <span class="nx">li</span><span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"#trends"</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-28" class="content">
+              <p><img src="./images/trends-pass.jpg" alt="Example test run"></p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-29" class="content">
+              <h1>Jasmine Ruby Gem</h1><pre><code>$ gem install jasmine-ruby
+$ rails _2.3.5_ app
 $ cd app
 $ script/generate jasmine
   Jasmine has been installed with example specs.
@@ -5163,13 +5213,13 @@ $ rake jasmine
           </div>
         
           <div class="">
-            <div id="slide-27" class="content">
+            <div id="slide-30" class="content">
               <p><img src="./images/textmate-after-generate.jpg" alt="Textmate"><img src="./images/jasmine-ruby-sample.jpg" alt="Example test run"></p>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-28" class="content">
+            <div id="slide-31" class="content">
               <h1>More!</h1><ul>
 <li>http://github.com/pivotal/jasmine</li>
 <li>http://github.com/pivotal/jasmine-ruby</li>
@@ -5179,7 +5229,7 @@ $ rake jasmine
           </div>
         
           <div class="">
-            <div id="slide-29" class="content">
+            <div id="slide-32" class="content">
               <p><img src="./images/pivotal-labs.png" alt="Pivotal Labs"></p><h1>Happy Hour!</h1><h2>This Friday @ 7pm</h2><h2>Blue Owl (2nd Avenue and 12th Street)</h2><h4>Follow @pivotallabs</h4>
             </div>
           </div>
