@@ -321,6 +321,17 @@
 
 !SLIDE
 
+# ... or without Rails
+
+@@@
+    $ mkdir app
+    $ jasmine init
+@@@
+
+![Textmate](./images/jasmine-init.jpg) 
+
+!SLIDE
+
 # Jasmine Ruby Gem
 
 @@@
@@ -328,7 +339,7 @@
 @@@
 
 * Built-in Continuous Integration rake task
-* Uses Selenium to drive a browser
+* Uses Selenium to drive the browser and rspec to test expectations
 * Works out of the box with CruiseControl.rb, Hudson, Team City, etc.
 
 !SLIDE
