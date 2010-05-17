@@ -321,10 +321,25 @@
 
 !SLIDE
 
-# More!
+# Jasmine Ruby Gem
+
+@@@
+    $ rake jasmine:ci
+@@@
+
+* Built-in Continuous Integration rake task
+* Uses Selenium to drive a browser
+* Works out of the box with CruiseControl.rb, Hudson, Team City, etc.
+
+!SLIDE
+
+## Fork it on GitHub
 
 * http://github.com/pivotal/jasmine
 * http://github.com/pivotal/jasmine-ruby
+
+## Support
+
 * http://groups.google.com/group/jasmine-js
 
 !SLIDE
