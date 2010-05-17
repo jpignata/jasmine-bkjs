@@ -132,7 +132,7 @@
         twitterApi.getTrends();
         
         expect(jQuery.getJSON).wasCalledWith(
-          "http://search.twitter.com/1/trends/current.json?callback=?", 
+          "http://search.twitter.com/1/trends.json?callback=?", 
           jasmine.any(Function)
         );
       });
@@ -147,7 +147,7 @@
 
 @@@ js
     var TwitterApi = function() {
-      this.trendsUrl = "http://search.twitter.com/1/trends/current.json?callback=?"
+      this.trendsUrl = "http://search.twitter.com/1/trends.json?callback=?"
     };
 
     TwitterApi.prototype = {
@@ -257,10 +257,14 @@
 
 !SLIDE
 
+#DOM Fixtures and jQuery
+
+!SLIDE
+
 @@@ js
     describe("TwitterApi", function() {
       beforeEach(function() { 
-        jQuery('<div id="trends" />').appendTo("body"); 
+        jQuery('<div id="trends" />').appendTo("#jasmine_content"); 
       });
 
       afterEach(function() { jQuery("#trends").remove(); });    
@@ -302,6 +306,10 @@
 
 !SLIDE
 
+![Screenshot](./images/trends.jpg)
+
+!SLIDE
+
 # Jasmine Ruby Gem
 
 @@@
@@ -321,7 +329,7 @@
 
 !SLIDE
 
-# ... or without Rails
+# No Rails Required
 
 @@@
     $ mkdir app
@@ -332,13 +340,12 @@
 
 !SLIDE
 
-# Jasmine Ruby Gem
+# Continuous Integration
 
 @@@
     $ rake jasmine:ci
 @@@
 
-* Built-in Continuous Integration rake task
 * Uses Selenium to drive the browser and rspec to test expectations
 * Works out of the box with CruiseControl.rb, Hudson, Team City, etc.
 

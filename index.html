@@ -4902,7 +4902,7 @@ jQuery.extend( jQuery.easing,
           <div class="">
             <div id="slide-4" class="content">
               <pre><code>As a site administrator
-I want to obfuscate offensive language in comments
+I want to obfuscate offensive language
 So that I don't risk offending my users
 </code></pre>
             </div>
@@ -5016,7 +5016,7 @@ So that I don't risk offending my users
     <span class="nx">twitterApi</span><span class="p">.</span><span class="nx">getTrends</span><span class="p">();</span>
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalledWith</span><span class="p">(</span>
-      <span class="s2">"http://search.twitter.com/1/trends/current.json?callback=?"</span><span class="p">,</span> 
+      <span class="s2">"http://search.twitter.com/1/trends.json?callback=?"</span><span class="p">,</span> 
       <span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Function</span><span class="p">)</span>
     <span class="p">);</span>
   <span class="p">});</span>
@@ -5034,7 +5034,7 @@ So that I don't risk offending my users
           <div class="">
             <div id="slide-16" class="content">
               <div class="highlight js code highlight"><pre><span class="kd">var</span> <span class="nx">TwitterApi</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">trendsUrl</span> <span class="o">=</span> <span class="s2">"http://search.twitter.com/1/trends/current.json?callback=?"</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">trendsUrl</span> <span class="o">=</span> <span class="s2">"http://search.twitter.com/1/trends.json?callback=?"</span>
 <span class="p">};</span>
 
 <span class="nx">TwitterApi</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
@@ -5152,9 +5152,15 @@ So that I don't risk offending my users
         
           <div class="">
             <div id="slide-26" class="content">
+              <h1>DOM Fixtures and jQuery</h1>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-27" class="content">
               <div class="highlight js code highlight"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"TwitterApi"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
-    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'&lt;div id="trends" /&gt;'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"body"</span><span class="p">);</span> 
+    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'&lt;div id="trends" /&gt;'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s2">"#jasmine_content"</span><span class="p">);</span> 
   <span class="p">});</span>
 
   <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s2">"#trends"</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span> <span class="p">});</span>    
@@ -5173,7 +5179,7 @@ So that I don't risk offending my users
           </div>
         
           <div class="">
-            <div id="slide-27" class="content">
+            <div id="slide-28" class="content">
               <div class="highlight js code highlight"><pre><span class="nx">TwitterApi</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">updateTrends</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">trends</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">jQuery</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">trends</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">trend</span><span class="p">)</span> <span class="p">{</span>
@@ -5194,13 +5200,19 @@ So that I don't risk offending my users
           </div>
         
           <div class="">
-            <div id="slide-28" class="content">
+            <div id="slide-29" class="content">
               <p><img src="./images/trends-pass.jpg" alt="Example test run"></p>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-29" class="content">
+            <div id="slide-30" class="content">
+              <p><img src="./images/trends.jpg" alt="Screenshot"></p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-31" class="content">
               <h1>Jasmine Ruby Gem</h1><pre><code>$ gem install jasmine-ruby
 $ rails _2.3.5_ app
 $ cd app
@@ -5213,13 +5225,13 @@ $ rake jasmine
           </div>
         
           <div class="">
-            <div id="slide-30" class="content">
+            <div id="slide-32" class="content">
               <p><img src="./images/textmate-after-generate.jpg" alt="Textmate"><img src="./images/jasmine-ruby-sample.jpg" alt="Example test run"></p>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-31" class="content">
+            <div id="slide-33" class="content">
               <h1>... or without Rails</h1><pre><code>$ mkdir app
 $ jasmine init
 </code></pre><p><img src="./images/jasmine-init.jpg" alt="Textmate"></p>
@@ -5227,7 +5239,7 @@ $ jasmine init
           </div>
         
           <div class="">
-            <div id="slide-32" class="content">
+            <div id="slide-34" class="content">
               <h1>Jasmine Ruby Gem</h1><pre><code>$ rake jasmine:ci
 </code></pre><ul>
 <li>Built-in Continuous Integration rake task</li>
@@ -5238,7 +5250,7 @@ $ jasmine init
           </div>
         
           <div class="">
-            <div id="slide-33" class="content">
+            <div id="slide-35" class="content">
               <h2>Fork it on GitHub</h2><ul>
 <li>http://github.com/pivotal/jasmine</li>
 <li>http://github.com/pivotal/jasmine-ruby</li>
@@ -5250,7 +5262,7 @@ $ jasmine init
           </div>
         
           <div class="">
-            <div id="slide-34" class="content">
+            <div id="slide-36" class="content">
               <p><img src="./images/pivotal-labs.png" alt="Pivotal Labs"></p><h1>Happy Hour!</h1><h2>This Friday @ 7pm</h2><h2>Blue Owl (2nd Avenue and 12th Street)</h2><h4>Follow @pivotallabs</h4>
             </div>
           </div>
