@@ -124,15 +124,17 @@
 !SLIDE
 
 @@@ js
-    describe("TwitterTimeline", function() {
-      describe(".getPublic", function() {
-        it("requests the latest public timeline from Twitter", function() {
-          spyOn(jQuery, "getJSON");
-          twitterTimeline = new TwitterTimeline();
-          apiUrl = "http://api.twitter.com/1/statuses/public_timeline.json?callback=?";
-          twitterTimeline.getPublic();
-          expect(jQuery.getJSON).wasCalledWith(apiUrl, jasmine.any(Function));
-        });
+    describe(".getTrends", function() {
+      it("requests current trends from Twitter's search API", function() {
+        spyOn(jQuery, "getJSON")
+        
+        twitterApi = new TwitterApi();
+        twitterApi.getTrends();
+        
+        expect(jQuery.getJSON).wasCalledWith(
+          "http://search.twitter.com/1/trends/current.json?callback=?", 
+          jasmine.any(Function)
+        );
       });
     });
 @@@
@@ -140,14 +142,64 @@
 !SLIDE
 
 @@@ js
-    var TwitterTimeline = function() {
-      this.publicTimelineUrl = "http://api.twitter.com/1/statuses/public_timeline.json?callback=?"
+    var TwitterApi = function() {
+      this.trendsUrl = "http://search.twitter.com/1/trends/current.json?callback=?"
     };
 
-    TwitterTimeline.prototype = {
-      getPublic: function() {
-        jQuery.getJSON(this.publicTimelineUrl, function(data, textStatus) {
-          // callback
+    TwitterApi.prototype = {
+      getTrends: function() {
+        jQuery.getJSON(this.trendsUrl, function(data, textStatus) {});
+      }
+    };
+@@@
+
+!SLIDE
+
+@@@ js
+    mockResponse = {
+      as_of: "2010-05-18 19:21",
+      trends: [
+        {name: "Woodford Reserve", url: "http://fake.url/woodford-reserve"},
+        {name: "Clojure", url: "http://fake.url/clojure"},
+        {name: "iPad", url: "http://fake.url/ipad"},
+        {name: "Eyjafjallajokull", url: "http://fake.url/eyjafjallajokull"},
+        {name: "Bill Hicks", url: "http://fake.url/bill-hicks"}                
+      ]
+    };
+@@@
+
+!SLIDE
+
+@@@ js
+    describe("TwitterApi", function() {
+      it("responds with an array of current trends", function() {
+        spyOn(jQuery, "getJSON")
+        
+        twitterApi = new TwitterApi();
+
+        var trends = [];
+        twitterApi.getTrends(function(response) { 
+          trends = response; 
+        });
+
+        jQuery.getJSON.mostRecentCall.args[1](mockResponse);
+        expect(trends.length).toEqual(5);
+        expect(trends[1]['name']).toEqual('Clojure');
+      });
+    });
+@@@
+
+!SLIDE
+
+![Example test run](./images/spies-array-failure.jpg) 
+
+!SLIDE
+
+@@@ js
+    TwitterApi.prototype = {
+      getTrends: function(callback) {
+        jQuery.getJSON(this.trendsUrl, function(data, textStatus) {
+          callback(data["trends"]);
         });
       }
     };
@@ -155,10 +207,15 @@
 
 !SLIDE
 
+![Example test run](./images/spies-array-pass.jpg) 
+
+!SLIDE
+
 # Jasmine Ruby Gem
 
 @@@
-    $ rails _2.3.5_ trends
+    $ rails _2.3.5_ app
+    $ cd app
     $ script/generate jasmine
       Jasmine has been installed with example specs.
     $ rake jasmine
