@@ -28,7 +28,7 @@
 
 @@@
     As a site administrator
-    I want to obfuscate offensive language in comments
+    I want to obfuscate offensive language
     So that I don't risk offending my users
 @@@
 
