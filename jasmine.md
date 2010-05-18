@@ -132,7 +132,7 @@
         twitterApi.getTrends();
         
         expect(jQuery.getJSON).wasCalledWith(
-          "http://search.twitter.com/1/trends.json?callback=?", 
+          "http://search.twitter.com/trends.json?callback=?", 
           jasmine.any(Function)
         );
       });
@@ -147,7 +147,7 @@
 
 @@@ js
     var TwitterApi = function() {
-      this.trendsUrl = "http://search.twitter.com/1/trends.json?callback=?"
+      this.trendsUrl = "http://search.twitter.com/trends.json?callback=?"
     };
 
     TwitterApi.prototype = {

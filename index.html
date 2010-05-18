@@ -5016,7 +5016,7 @@ So that I don't risk offending my users
     <span class="nx">twitterApi</span><span class="p">.</span><span class="nx">getTrends</span><span class="p">();</span>
 
     <span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalledWith</span><span class="p">(</span>
-      <span class="s2">"http://search.twitter.com/1/trends.json?callback=?"</span><span class="p">,</span> 
+      <span class="s2">"http://search.twitter.com/trends.json?callback=?"</span><span class="p">,</span> 
       <span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Function</span><span class="p">)</span>
     <span class="p">);</span>
   <span class="p">});</span>
@@ -5034,7 +5034,7 @@ So that I don't risk offending my users
           <div class="">
             <div id="slide-16" class="content">
               <div class="highlight js code highlight"><pre><span class="kd">var</span> <span class="nx">TwitterApi</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">trendsUrl</span> <span class="o">=</span> <span class="s2">"http://search.twitter.com/1/trends.json?callback=?"</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">trendsUrl</span> <span class="o">=</span> <span class="s2">"http://search.twitter.com/trends.json?callback=?"</span>
 <span class="p">};</span>
 
 <span class="nx">TwitterApi</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
