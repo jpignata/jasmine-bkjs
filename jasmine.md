@@ -360,6 +360,10 @@
 
 * http://groups.google.com/group/jasmine-js
 
+## Request Features
+
+* http://www.pivotaltracker.com/projects/10606
+
 !SLIDE
 
 ![Pivotal Labs](./images/pivotal-labs.png) 
