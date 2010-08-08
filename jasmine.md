@@ -54,10 +54,10 @@
 !SLIDE
 
 @@@ js
-    String.prototype.cleanUp = function(filterWords) {
-      pattern = filterWords.join("|");
-      regExp = new RegExp(pattern, "mig");
-      return this.replace(regExp, "***");
+    String.prototype.cleanUp = function (filterWords) {
+        var pattern = filterWords.join("|"),
+            regExp  = new RegExp(pattern, "mig");
+        return this.replace(regExp, "***");
     };
 @@@
 
@@ -131,7 +131,7 @@
         twitterApi = new TwitterApi();
         twitterApi.getTrends();
         
-        expect(jQuery.getJSON).wasCalledWith(
+        expect(jQuery.getJSON).toHaveBeenCalledWith(
           "http://search.twitter.com/trends.json?callback=?", 
           jasmine.any(Function)
         );
@@ -224,10 +224,7 @@
 @@@ js
     spyOn(jQuery, "getJSON");
 
-    expect(jQuery.getJSON).wasCalled();
-    expect(jQuery.getJSON).wasNotCalled();
-    expect(jQuery.getJSON).wasCalledWith("http://example.com/service.json");
-    expect(jQuery.getJSON).wasNotCalledWith("http://example.com/service.xml");
+    expect(jQuery.getJSON).toHaveBeenCalled();    expect(jQuery.getJSON).toHaveBeenCalledWith("http://example.com/service.json");
 @@@
 
 !SLIDE
@@ -313,7 +310,7 @@
 # Jasmine Ruby Gem
 
 @@@
-    $ gem install jasmine-ruby
+    $ gem install jasmine
     $ rails _2.3.5_ app
     $ cd app
     $ script/generate jasmine

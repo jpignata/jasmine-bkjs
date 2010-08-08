@@ -4932,10 +4932,10 @@ So that I don't risk offending my users
         
           <div class="">
             <div id="slide-7" class="content">
-              <div class="highlight js code highlight"><pre><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">cleanUp</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">filterWords</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">pattern</span> <span class="o">=</span> <span class="nx">filterWords</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">"|"</span><span class="p">);</span>
-  <span class="nx">regExp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="s2">"mig"</span><span class="p">);</span>
-  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regExp</span><span class="p">,</span> <span class="s2">"***"</span><span class="p">);</span>
+              <div class="highlight js code highlight"><pre><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">cleanUp</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">filterWords</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pattern</span> <span class="o">=</span> <span class="nx">filterWords</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">"|"</span><span class="p">),</span>
+        <span class="nx">regExp</span>  <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">pattern</span><span class="p">,</span> <span class="s2">"mig"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regExp</span><span class="p">,</span> <span class="s2">"***"</span><span class="p">);</span>
 <span class="p">};</span>
 </pre></div>
             </div>
@@ -5015,7 +5015,7 @@ So that I don't risk offending my users
     <span class="nx">twitterApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TwitterApi</span><span class="p">();</span>
     <span class="nx">twitterApi</span><span class="p">.</span><span class="nx">getTrends</span><span class="p">();</span>
 
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalledWith</span><span class="p">(</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span>
       <span class="s2">"http://search.twitter.com/trends.json?callback=?"</span><span class="p">,</span> 
       <span class="nx">jasmine</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Function</span><span class="p">)</span>
     <span class="p">);</span>
@@ -5119,10 +5119,7 @@ So that I don't risk offending my users
             <div id="slide-23" class="content">
               <h1>Spy Matchers</h1><div class="highlight js code highlight"><pre><span class="nx">spyOn</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="s2">"getJSON"</span><span class="p">);</span>
 
-<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalled</span><span class="p">();</span>
-<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasNotCalled</span><span class="p">();</span>
-<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasCalledWith</span><span class="p">(</span><span class="s2">"http://example.com/service.json"</span><span class="p">);</span>
-<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">wasNotCalledWith</span><span class="p">(</span><span class="s2">"http://example.com/service.xml"</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>    <span class="nx">expect</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s2">"http://example.com/service.json"</span><span class="p">);</span>
 </pre></div>
             </div>
           </div>
@@ -5213,7 +5210,7 @@ So that I don't risk offending my users
         
           <div class="">
             <div id="slide-31" class="content">
-              <h1>Jasmine Ruby Gem</h1><pre><code>$ gem install jasmine-ruby
+              <h1>Jasmine Ruby Gem</h1><pre><code>$ gem install jasmine
 $ rails _2.3.5_ app
 $ cd app
 $ script/generate jasmine
