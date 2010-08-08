@@ -352,23 +352,15 @@
 
 * http://github.com/pivotal/jasmine
 * http://github.com/pivotal/jasmine-ruby
+* http://groups.google.com/group/jasmine-js-dev
 
 ## Support
 
 * http://groups.google.com/group/jasmine-js
-
-## Request Features
-
-* http://www.pivotaltracker.com/projects/10606
+* http://github.com/pivotal/jasmine/issues
 
 !SLIDE
 
-![Pivotal Labs](./images/pivotal-labs.png) 
+## Changelog
 
-# Happy Hour!
-
-## This Friday @ 7pm
-
-## Blue Owl (2nd Avenue and 12th Street)
-
-#### Follow @pivotallabs
+* 2010-08-08: Updated syntax, jasmine gem name and URLs
